@@ -1,0 +1,36 @@
+<h1>Photos#index</h1>
+<p>Find me in app/views/photos/index.html.erb</p>
+<h1>写真一覧</h1>
+<% if flash[:success] %>
+  <p class="success"><%= flash[:success] %></p>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>photo id</th>
+      <th>user id</th>
+      <th>写真</th>
+      <th>更新日</th>
+      <th>作成日</th>
+      <th>詳細</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photos.each do |photo| %>
+      <tr>
+        <td><%= photo.id %></td>
+        <td><%= photo.user_id %></td>
+        <td><%= image_tag photo.image, class:'image-field' %></td>
+        <td><%= photo.updated_at %></td>
+        <td><%= photo.created_at %></td>
+        <td><%= link_to "詳細", photo %></td>
+        <td><%= link_to "編集", [:edit, photo] %></td>
+        <td><%= link_to '削除', photo, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p><%= link_to "写真登録", :new_photo %></p>

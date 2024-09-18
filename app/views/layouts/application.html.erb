@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Papp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <h1>写真を削除する</h1>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= link_to "サインアップ", new_user_registration_path %>
+    <%= link_to "サインイン", new_user_session_path %>
+    <%= link_to 'サインアウト', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "サインアウトしますか？" } %>
+    <%= link_to "HOME", root_path %>
+    <%= link_to "写真一覧", photos_path %>
+    <%= yield %>
+  </body>
+</html>
